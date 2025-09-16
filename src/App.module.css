@@ -1,0 +1,27 @@
+.mainContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+.blockContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.block {
+  display: flex;
+  border: 2px black solid;
+  padding: 16px;
+}
+
+body {
+  margin: 0;
+}
+
+:root {
+  box-sizing: border-box;
+}
