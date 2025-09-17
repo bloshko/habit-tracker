@@ -3,6 +3,7 @@ import { invoke } from "@tauri-apps/api/core";
 import { Block } from "./Block";
 import styles from "../App.module.css";
 import { Habit } from "../utils/habit";
+import { clearAllHabits } from "../utils/api";
 
 const INITIAL_HABITS: Habit[] = [];
 
@@ -44,23 +45,30 @@ export const Playground = () => {
   }
 
   return (
-    <main className={styles.mainContainer}>
-      <div className={styles.blockContainer}>
-        {habits.map((habit) => (
-          <Block habit={habit} />
-        ))}
-      </div>
+    <div className={styles.fullScreenContainer}>
+      <main className={styles.mainContainer}>
+        <div className={styles.blockContainer}>
+          {habits.map((habit) => (
+            <Block habit={habit} />
+          ))}
+        </div>
 
-      <div>
-        <label htmlFor="habit_name">Habit name:</label>
-        <input
-          type="text"
-          placeholder="test"
-          onChange={handleHabitNameChange}
-          value={newHabitText}
-        />
-        <button onClick={handleAddHabit}>add</button>
-      </div>
-    </main>
+        <div>
+          <label htmlFor="habit_name">Habit name:</label>
+          <input
+            type="text"
+            placeholder="test"
+            onChange={handleHabitNameChange}
+            value={newHabitText}
+          />
+          <button className={styles.button} onClick={handleAddHabit}>
+            add
+          </button>
+          <button className={styles.button} onClick={clearAllHabits}>
+            Clear all habits
+          </button>
+        </div>
+      </main>
+    </div>
   );
 };

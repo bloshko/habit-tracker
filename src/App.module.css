@@ -1,9 +1,42 @@
-.mainContainer {
+.fullScreenContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   min-width: 100vw;
   min-height: 100vh;
+}
+
+.mainContainer {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.dialogContainer {
+  border: 0;
+  margin: 0;
+  padding: 0;
+  background: rgba(0, 0, 0, 0.5);
+
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  width: 100vw;
+  height: 100vh;
+
+  display: grid;
+  place-items: center;
+}
+
+.habitLoggerContainer {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border: 2px solid black;
+  padding: 32px;
 }
 
 .blockContainer {
@@ -14,8 +47,19 @@
 
 .block {
   display: flex;
+  width: 100%;
   border: 2px black solid;
   padding: 16px;
+}
+
+.button {
+  margin: 0;
+  padding: 16px;
+  border: 0;
+}
+
+.button:hover {
+  transition-property: height, width;
 }
 
 body {

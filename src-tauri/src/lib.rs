@@ -13,6 +13,11 @@ fn get_habits(state: State<AppState>) -> Vec<model::Habit> {
 }
 
 #[tauri::command]
+fn clear_all_habits(state: State<AppState>) {
+    state.0.lock().unwrap().habits.clear();
+}
+
+#[tauri::command]
 fn add_habit(state: State<AppState>, name: String) -> model::Habit {
     let mut db = state.0.lock().unwrap();
     let id = nanoid::nanoid!();
@@ -48,7 +53,11 @@ pub fn run() {
                 }
             }
         })
-        .invoke_handler(tauri::generate_handler![add_habit, get_habits])
+        .invoke_handler(tauri::generate_handler![
+            add_habit,
+            get_habits,
+            clear_all_habits
+        ])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
